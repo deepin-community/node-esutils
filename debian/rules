@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	perl -ne 'if(/function isDecimalDigit/){print "\n";$$n=0};print unless $$n;if(/See .tools.generate-identifier-regex.js/){$$n++;print `node tools/generate-identifier-regex.js`}' lib/code.js > tmp.js
+	mv lib/code.js debian
+	mv tmp.js lib/code.js
+
+override_dh_auto_clean:
+	if [ -e debian/code.js ]; then \
+		rm lib/code.js; \
+		mv -f debian/code.js lib/code.js; \
+	fi
+	dh_auto_clean --buildsystem=nodejs

@@ -1,0 +1,4 @@
+# Regenerated file
+source-is-missing lib/code.js
+source-contains-prebuilt-javascript-object lib/code.js
+very-long-line-length-in-source-file lib/code.js line 43 is 8376 characters long (>512)

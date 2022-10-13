@@ -1,0 +1,5 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s%(?:.*?/)?v?(@ANY_VERSION@@ARCHIVE_EXT@)%@PACKAGE@-$1% \
+ https://github.com/estools/esutils/tags (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@

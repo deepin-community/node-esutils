@@ -1,0 +1,32 @@
+Source: node-esutils
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Pirate Praveen <praveen@debian.org>
+Build-Depends: debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , chai <!nocheck>
+ , coffeescript <!nocheck>
+ , mocha <!nocheck>
+ , node-regenerate
+ , node-unicode-14.0.0
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/js-team/node-esutils
+Vcs-Git: https://salsa.debian.org/js-team/node-esutils.git
+Homepage: https://github.com/estools/esutils
+Testsuite: autopkgtest-pkg-nodejs
+Rules-Requires-Root: no
+
+Package: node-esutils
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: utility box for ECMAScript language tools
+ This package includes a few functions helping to use
+ AST (Abstract Syntaxt Tree) traversal functions from
+ estools bundle.
+ .
+ Estool is a code generator created from Mozilla's Parser
+ using Node.js.
+ .
+ Node.js is an event-based server-side JavaScript engine.

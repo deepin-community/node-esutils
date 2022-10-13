@@ -1,0 +1,58 @@
+Description: fix generation tool to regenerate regexps
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2021-10-30
+
+--- a/tools/generate-identifier-regex.js
++++ b/tools/generate-identifier-regex.js
+@@ -4,11 +4,11 @@
+ const regenerate = require('regenerate');
+ 
+ // Which Unicode version should be used?
+-const version = '9.0.0';
++const version = '14.0.0';
+ 
+ // Set up a shorthand function to import Unicode data.
+ const get = function(what) {
+-    return require('unicode-' + version + '/' + what + '/code-points');
++    return require('@unicode/unicode-' + version + '/' + what + '/code-points');
+ };
+ 
+ // Get the Unicode categories needed to construct the ES5 regex.
+@@ -64,24 +64,27 @@
+     };
+ }());
+ 
++console.log('    ES5Regex = {');
+ console.log(
+-    '// ECMAScript 5.1/Unicode v%s NonAsciiIdentifierStart:\n%s\n',
++    '        // ECMAScript 5.1/Unicode v%s NonAsciiIdentifierStart:\n%s\n',
+     version,
+-    es5regexes.NonAsciiIdentifierStart
++    '        NonAsciiIdentifierStart: ' + es5regexes.NonAsciiIdentifierStart + ","
+ );
+ console.log(
+-    '// ECMAScript 5.1/Unicode v%s NonAsciiIdentifierPart:\n%s\n',
++    '        // ECMAScript 5.1/Unicode v%s NonAsciiIdentifierPart:\n%s\n',
+     version,
+-    es5regexes.NonAsciiIdentifierPart
++    '        NonAsciiIdentifierPart: ' + es5regexes.NonAsciiIdentifierPart
+ );
+-
++console.log('    };\n');
++console.log('    ES6Regex = {');
+ console.log(
+-    '// ECMAScript 6/Unicode v%s NonAsciiIdentifierStart:\n%s\n',
++    '        // ECMAScript 6/Unicode v%s NonAsciiIdentifierStart:\n%s\n',
+     version,
+-    es6regexes.NonAsciiIdentifierStart
++    '        NonAsciiIdentifierStart: ' + es6regexes.NonAsciiIdentifierStart + ","
+ );
+ console.log(
+-    '// ECMAScript 6/Unicode v%s NonAsciiIdentifierPart:\n%s',
++    '        // ECMAScript 6/Unicode v%s NonAsciiIdentifierPart:\n%s',
+     version,
+-    es6regexes.NonAsciiIdentifierPart
++    '        NonAsciiIdentifierPart: ' + es6regexes.NonAsciiIdentifierPart
+ );
++console.log('    };');
