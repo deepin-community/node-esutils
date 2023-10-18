@@ -1,3 +1,12 @@
+node-esutils (2.0.3+~2.0.0-1) unstable; urgency=medium
+
+  * Team upload
+  * Update standards version to 4.6.1, no changes needed.
+  * Update to node-unicode-15.0.0
+  * Embed typescript declarations and repack
+
+ -- Yadd <yadd@debian.org>  Fri, 16 Sep 2022 18:17:44 +0200
+
 node-esutils (2.0.3-3) unstable; urgency=medium
 
   * Team upload

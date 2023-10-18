@@ -2,4 +2,9 @@ version=4
 opts=\
 dversionmangle=auto,\
 filenamemangle=s%(?:.*?/)?v?(@ANY_VERSION@@ARCHIVE_EXT@)%@PACKAGE@-$1% \
- https://github.com/estools/esutils/tags (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@
+ https://github.com/estools/esutils/tags (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ group
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=types-esutils,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-types-esutils-$1/" \
+ https://registry.npmjs.org/@types/esutils https://registry.npmjs.org/@types/esutils/-/esutils-([\d\.]+)@ARCHIVE_EXT@ group
