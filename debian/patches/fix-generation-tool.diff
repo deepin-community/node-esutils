@@ -10,7 +10,7 @@ Last-Update: 2021-10-30
  
  // Which Unicode version should be used?
 -const version = '9.0.0';
-+const version = '14.0.0';
++const version = '15.0.0';
  
  // Set up a shorthand function to import Unicode data.
  const get = function(what) {
